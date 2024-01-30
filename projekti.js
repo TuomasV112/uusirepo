@@ -24,6 +24,8 @@ window.onload = function () {
   var remainingStars; // remainingStars variable
   var startTime;
   var timer;
+  var score = 0; // Initialize score
+  var scoreText; // Variable for score text
 
   var game = new Phaser.Game(config);
 
@@ -72,6 +74,9 @@ window.onload = function () {
 
     // Create the timer Game Object
     timer = this.add.text(10, 10, 'Time: 0s', { font: '24px Arial', fill: '#ffffff' });
+
+    // Create the score Game Object
+    scoreText = this.add.text(10, 50, 'Score: 0', { font: '24px Arial', fill: '#ffffff' });
   }
 
   function update() {
@@ -104,5 +109,7 @@ window.onload = function () {
   function collectStar(player, star) {
     star.disableBody(true, true);
     remainingStars--;
+    score += 1000; // Increment the score by 1000
+    scoreText.text = 'Score: ' + score; // Update the score text
   }
 };
