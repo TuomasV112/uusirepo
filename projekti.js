@@ -22,6 +22,8 @@ window.onload = function () {
   var stars;
   var level = 1; // Level 1
   var remainingStars; // remainingStars variable
+  var startTime;
+  var timer;
 
   var game = new Phaser.Game(config);
 
@@ -64,6 +66,12 @@ window.onload = function () {
 
     // remainingStars variable
     remainingStars = stars.getChildren().length;
+
+    // Set the starting time
+    startTime = Date.now();
+
+    // Create the timer Game Object
+    timer = this.add.text(10, 10, 'Time: 0s', { font: '24px Arial', fill: '#ffffff' });
   }
 
   function update() {
@@ -86,6 +94,11 @@ window.onload = function () {
       // Restart the game 
       this.scene.restart({ level: level });
     }
+
+    // Calculate the elapsed time and update the timer
+    var elapsedTime = Date.now() - startTime;
+    var seconds = Math.floor(elapsedTime / 1000);
+    timer.text = 'Time: ' + seconds + 's';
   }
 
   function collectStar(player, star) {
