@@ -75,6 +75,9 @@ window.onload = function () {
     // Create the timer Game Object
     timer = this.add.text(10, 10, 'Time: 0s', { font: '24px Arial', fill: '#ffffff' });
 
+    // Reset the score to 0 when the level restarts
+    score = 0;
+
     // Create the score Game Object
     scoreText = this.add.text(10, 50, 'Score: 0', { font: '24px Arial', fill: '#ffffff' });
   }
